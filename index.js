@@ -39,15 +39,20 @@ function Airplane(name) {
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
   
- function Person() {
-    
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+    this.toString = function () {
+      return `${this.name}, ${this.age}`
+    }
   }
- 
- 
-
-  
-  
-  
+  Person.prototype.eat = function (food) {
+    if (this.stomach.length != 10) this.stomach.push(food)
+  };
+  Person.prototype.poop = function () {
+    this.stomach = []
+  };  
   
   /*
     TASK 2
@@ -63,10 +68,15 @@ function Airplane(name) {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- function Car() {
-    
+ function Car(model, miles) {
+    this.model = model;
+    this.milesPerGallon = miles;
+    this.tank = 0;
+    this.odometer = 0;
   }
-  
+  Car.prototype.fill = function (gallons) {
+    this.tank += gallons;
+  }
   
   /*
     TASK 3
@@ -75,11 +85,15 @@ function Airplane(name) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
+function Baby(name, age, toy) {
+  this.name = name;
+  this.age = age;
+  this.favoriteToy = toy;
   }
- 
-  
+  Baby.prototype = Object.create(Person.prototype);
+  Baby.prototype.play = function () {
+    return `Playing with ${this.favoriteToy}, ${this.favoriteToy} being the favorite toy.`
+  }
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
