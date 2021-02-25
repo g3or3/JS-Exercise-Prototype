@@ -97,10 +97,10 @@ function Baby(name, age, toy) {
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Using 'this' outside of an object will refer to the global object and return undefined
+    2. Using 'this' as part of a method of an object will refer to the object the function is called on (to the left of the function after the .)
+    3. We can use call, bind and apply to refer to a specific value when using 'this' keyword inside of what is passed to those functions
+    4. When using the new keyword on a constructor function the 'this' keyword will point to that new object
   */
   
   
